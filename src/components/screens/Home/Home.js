@@ -527,158 +527,188 @@ export default class Home extends Component {
               <Image style={{width: '100%', height: 50}} source={AppLogo4} />
             </Container>
 
-            <Container ContainerStyle={{height: '30%'}}>
-              <Swiper
-                style={style_swipper.wrapper}
-                autoplayTimeout={5}
-                autoplay={true}
-                activeDotColor={'#0d5e50'}>
-                <View style={style_swipper.slide1}>
-                  <Text style={style_swipper.text}>
-                    Rs {this.state.data1.credit}
-                  </Text>
-                  <Container
-                    ContainerStyle={{
-                      flexDirection: 'row',
-                      justifyContent: 'center',
-                    }}>
-                    <Image
-                      style={{width: 50, height: 30, marginTop: 25}}
-                      source={AppLogo3}
-                    />
-                    <Text
-                      style={{
-                        color: '#ffffff',
-                        marginTop: 35,
-                        fontWeight: 'bold',
-                      }}>
-                      Credit Amount
+            <ScrollView>
+              <Container ContainerStyle={{height: '30%'}}>
+                <Swiper
+                  style={style_swipper.wrapper}
+                  autoplayTimeout={5}
+                  autoplay={true}
+                  activeDotColor={'#0d5e50'}>
+                  <View style={style_swipper.slide1}>
+                    <Text style={style_swipper.text}>
+                      Rs {this.state.data1.credit}
                     </Text>
-                  </Container>
-                </View>
-                <View style={style_swipper.slide2}>
-                  <Text style={style_swipper.text}>
-                    Rs. {this.state.data1.debit}
-                  </Text>
-                  <Container
-                    ContainerStyle={{
-                      flexDirection: 'row',
-                      justifyContent: 'center',
-                    }}>
-                    <Image
-                      style={{width: 50, height: 30, marginTop: 35}}
-                      source={AppLogo3}
-                    />
-                    <Text
-                      style={{
-                        color: '#ffffff',
-                        marginTop: 35,
-                        fontWeight: 'bold',
+                    <Container
+                      ContainerStyle={{
+                        flexDirection: 'row',
+                        justifyContent: 'center',
                       }}>
-                      Debit Amount
+                      <Image
+                        style={{width: 50, height: 30, marginTop: 25}}
+                        source={AppLogo3}
+                      />
+                      <Text
+                        style={{
+                          color: '#ffffff',
+                          marginTop: 35,
+                          fontWeight: 'bold',
+                        }}>
+                        Credit Amount
+                      </Text>
+                    </Container>
+                  </View>
+                  <View style={style_swipper.slide2}>
+                    <Text style={style_swipper.text}>
+                      Rs. {this.state.data1.debit}
                     </Text>
-                  </Container>
-                </View>
-                <View style={style_swipper.slide3}>
-                  <Text style={style_swipper.text}>
-                    Rs {this.state.data1.total}
-                  </Text>
-                  <Container
-                    ContainerStyle={{
-                      flexDirection: 'row',
-                      justifyContent: 'center',
-                    }}>
-                    <Image
-                      style={{width: 50, height: 30, marginTop: 25}}
-                      source={AppLogo3}
-                    />
-                    <Text
-                      style={{
-                        color: '#ffffff',
-                        marginTop: 35,
-                        fontWeight: 'bold',
+                    <Container
+                      ContainerStyle={{
+                        flexDirection: 'row',
+                        justifyContent: 'center',
                       }}>
-                      Total Amount
+                      <Image
+                        style={{width: 50, height: 30, marginTop: 25}}
+                        source={AppLogo3}
+                      />
+                      <Text
+                        style={{
+                          color: '#ffffff',
+                          marginTop: 35,
+                          fontWeight: 'bold',
+                        }}>
+                        Debit Amount
+                      </Text>
+                    </Container>
+                  </View>
+                  <View style={style_swipper.slide3}>
+                    <Text style={style_swipper.text}>
+                      Rs {this.state.data1.total}
                     </Text>
-                  </Container>
-                </View>
-              </Swiper>
-            </Container>
+                    <Container
+                      ContainerStyle={{
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                      }}>
+                      <Image
+                        style={{width: 50, height: 30, marginTop: 25}}
+                        source={AppLogo3}
+                      />
+                      <Text
+                        style={{
+                          color: '#ffffff',
+                          marginTop: 35,
+                          fontWeight: 'bold',
+                        }}>
+                        Total Amount
+                      </Text>
+                    </Container>
+                  </View>
+                </Swiper>
+              </Container>
 
-            <View style={{height: 50}}>
-              <View
-                style={{
-                  marginLeft: 15,
-                  height: 250,
-                  marginRight: '20%',
-                  width: '40%',
-                }}>
-                {/* <Button title="Filter"
+              <View style={{height: 50, marginTop: 25}}>
+                <View
+                  style={{
+                    marginLeft: 15,
+                    marginRight: 15,
+                    height: 40,
+                    flexDirection: 'row',
+                    backgroundColor: '#FFFFFF',
+                  }}>
+                  {/* <Button title="Filter"
                   color="#008000"
                   padding={30}
                   onPress={this.toggleModal} /> */}
-                <TouchableHighlight
-                  style={
-                    (style.submit,
-                    {
-                      backgroundColor: '#008000',
-                      height: 50,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      borderRadius: 10,
-                    })
-                  }
-                  onPress={this.toggleModal}
-                  underlayColor="#fff">
-                  <Text
-                    style={{color: '#fff', fontSize: 16, fontWeight: 'bold'}}>
-                    Filter
-                  </Text>
-                </TouchableHighlight>
-              </View>
-              <Modal
-                isVisible={this.state.isModalVisible}
-                //onRequestClose={this.closeModal}
-                style={{justifyContent: 'flex-end'}}>
-                <View
-                  style={{
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: '#fff',
-                  }}>
+                  <TouchableHighlight
+                    style={
+                      (style.submit,
+                      {
+                        backgroundColor: '#008000',
+                        height: 35,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        borderRadius: 10,
+                        width: '40%',
+                      })
+                    }
+                    onPress={this.toggleModal}
+                    underlayColor="#fff">
+                    <Text
+                      style={{color: '#fff', fontSize: 16, fontWeight: 'bold'}}>
+                      Filter
+                    </Text>
+                  </TouchableHighlight>
                   <View
                     style={{
-                      width: 300,
-                      height: 300,
+                      marginLeft: 15,
+                      height: 40,
+                      width: '18%',
+                      backgroundColor: '#FFFFFF',
+                    }}></View>
+
+                  <TouchableHighlight
+                    style={
+                      (style.submit,
+                      {
+                        backgroundColor: '#008000',
+                        height: 35,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        borderRadius: 10,
+                        width: '40%',
+                      })
+                    }
+                    // onPress={this.toggleModal}
+                    underlayColor="#fff">
+                    <Text
+                      style={{color: '#fff', fontSize: 16, fontWeight: 'bold'}}>
+                      Generate Report
+                    </Text>
+                  </TouchableHighlight>
+                </View>
+                <Modal
+                  isVisible={this.state.isModalVisible}
+                  //onRequestClose={this.closeModal}
+                  style={{justifyContent: 'flex-end'}}>
+                  <View
+                    style={{
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      backgroundColor: '#fff',
                     }}>
-                    {/* <Button
+                    <View
+                      style={{
+                        width: 300,
+                        height: 300,
+                      }}>
+                      {/* <Button
                 title = "Filter"
                 onPress={this.hideModal}
                /> */}
-                    <Container
-                      ContainerStyle={{
-                        backgroundColor: '#fff',
-                        padding: 20,
-                        height: 300,
-                        borderRadius: 15,
-                      }}>
                       <Container
                         ContainerStyle={{
-                          backgroundColor: 'white',
-                          width: '100%',
-                          alignSelf: 'center',
-                          marginTop: 10,
-                          borderRadius: 5,
-                          marginBottom: 10,
-                          borderWidth: 1,
-                          paddingLeft: 80,
-                          paddingRight: 80,
-                          justifyContent: 'center',
-                          height: 40,
-                          borderColor: ' rgba(158, 150, 150, .5)',
+                          backgroundColor: '#fff',
+                          padding: 20,
+                          height: 300,
+                          borderRadius: 15,
                         }}>
-                        {/* <Picker
+                        <Container
+                          ContainerStyle={{
+                            backgroundColor: 'white',
+                            width: '100%',
+                            alignSelf: 'center',
+                            marginTop: 10,
+                            borderRadius: 5,
+                            marginBottom: 10,
+                            borderWidth: 1,
+                            paddingLeft: 80,
+                            paddingRight: 80,
+                            justifyContent: 'center',
+                            height: 40,
+                            borderColor: ' rgba(158, 150, 150, .5)',
+                          }}>
+                          {/* <Picker
                           selectedValue={this.state.selectedYear}
                           style={{
                             height: 50,
@@ -694,37 +724,37 @@ export default class Home extends Component {
                           {selectedYearFunc}
                         </Picker> */}
 
-                        <RNPickerSelect
-                          style={{
-                            padding: 10,
+                          <RNPickerSelect
+                            style={{
+                              padding: 10,
+                              alignSelf: 'center',
+                              fontSize: 20,
+                            }}
+                            onValueChange={(value) =>
+                              this.setState({selectedYear: value})
+                            }
+                            value={this.state.selectedYear}
+                            items={this.state.yearMain}
+                          />
+                        </Container>
+                        <Container
+                          ContainerStyle={{
+                            backgroundColor: 'white',
+                            width: '100%',
                             alignSelf: 'center',
-                            fontSize: 20,
-                          }}
-                          onValueChange={(value) =>
-                            this.setState({selectedYear: value})
-                          }
-                          value={this.state.selectedYear}
-                          items={this.state.yearMain}
-                        />
-                      </Container>
-                      <Container
-                        ContainerStyle={{
-                          backgroundColor: 'white',
-                          width: '100%',
-                          alignSelf: 'center',
-                          marginTop: 10,
-                          borderRadius: 5,
-                          marginBottom: 10,
-                          borderWidth: 1,
-                          paddingLeft: 50,
-                          paddingRight: 50,
-                          justifyContent: 'center',
-                          height: 40,
-                          paddingLeft: 80,
-                          paddingRight: 80,
-                          borderColor: ' rgba(158, 150, 150, .5)',
-                        }}>
-                        {/* <Picker
+                            marginTop: 10,
+                            borderRadius: 5,
+                            marginBottom: 10,
+                            borderWidth: 1,
+                            paddingLeft: 50,
+                            paddingRight: 50,
+                            justifyContent: 'center',
+                            height: 40,
+                            paddingLeft: 80,
+                            paddingRight: 80,
+                            borderColor: ' rgba(158, 150, 150, .5)',
+                          }}>
+                          {/* <Picker
                           selectedValue={this.state.selectedMonth}
                           style={{
                             height: 50,
@@ -739,254 +769,263 @@ export default class Home extends Component {
                           <Picker.Item label="Select Month" value="" disabled />
                           {selectedMonthFunc}
                         </Picker> */}
-                        <RNPickerSelect
-                          style={{
-                            padding: 10,
-                            alignSelf: 'center',
-                            fontSize: 20,
-                          }}
-                          onValueChange={(value) =>
-                            this.setState({selectedMonth: value})
-                          }
-                          value={this.state.selectedMonth}
-                          items={this.state.monthMain}
-                        />
-                      </Container>
-                      <Container containerStyle={{flexDirection: 'row'}}>
-                        <View
-                          style={{
-                            width: '30%',
-                            marginRight: '30%',
-                            marginLeft: '18%',
-                            marginTop: 40,
-                          }}>
-                          <Button
-                            title="Submit"
-                            color="#707070"
-                            onPress={() => {
-                              this.hideModal;
-                              this.getFilteredData();
+                          <RNPickerSelect
+                            style={{
+                              padding: 10,
+                              alignSelf: 'center',
+                              fontSize: 20,
                             }}
+                            onValueChange={(value) =>
+                              this.setState({selectedMonth: value})
+                            }
+                            value={this.state.selectedMonth}
+                            items={this.state.monthMain}
                           />
-                        </View>
+                        </Container>
+                        <Container containerStyle={{flexDirection: 'row'}}>
+                          <View
+                            style={{
+                              width: '30%',
+                              marginRight: '30%',
+                              marginLeft: '18%',
+                              marginTop: 40,
+                            }}>
+                            <Button
+                              title="Submit"
+                              color="#707070"
+                              onPress={() => {
+                                this.hideModal;
+                                this.getFilteredData();
+                              }}
+                            />
+                          </View>
 
-                        <View
-                          style={{
-                            width: '30%',
-                            marginRight: '5%',
-                            marginLeft: '50%',
-                            marginTop: -37,
-                          }}>
-                          <Button
-                            title="Cancel"
-                            color="#707070"
-                            onPress={this.hideModal}
-                          />
-                        </View>
+                          <View
+                            style={{
+                              width: '30%',
+                              marginRight: '5%',
+                              marginLeft: '50%',
+                              marginTop: -37,
+                            }}>
+                            <Button
+                              title="Cancel"
+                              color="#707070"
+                              onPress={this.hideModal}
+                            />
+                          </View>
+                        </Container>
                       </Container>
-                    </Container>
-                  </View>
-                </View>
-              </Modal>
-            </View>
-            <ScrollView
-              horizontal={true}
-              // showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{flexGrow: 1}}>
-              <View
-                style={
-                  (styles.container,
-                  {flex: 1, marginBottom: 20, marginTop: 10, marginLeft: 10})
-                }>
-                <View style={{flexDirection: 'row', marginBottom: 5}}>
-                  <View
-                    style={{
-                      backgroundColor: '#000000',
-                      width: 150,
-                      marginRight: 5,
-                    }}>
-                    <Text
-                      style={
-                        (style_flatlist.h2text,
-                        {color: '#ffffff', textAlign: 'center'})
-                      }>
-                      {'Actions'}
-                    </Text>
-                    <View
-                      style={{
-                        padding: 10,
-                        backgroundColor: '#0d5e50',
-                        alignItems: 'center',
-                      }}>
-                      <Image
-                        style={{width: 70, height: 50}}
-                        source={AppLogo2}
-                      />
                     </View>
                   </View>
-                  <View
-                    style={{
-                      marginLeft: 5,
-                      marginRight: 5,
-                      backgroundColor: '#000000',
-                      width: 150,
-                    }}>
-                    <Text
-                      style={
-                        (style_flatlist.h2text,
-                        {color: '#ffffff', textAlign: 'center'})
-                      }>
-                      Name
-                    </Text>
-                    <View
-                      style={{
-                        padding: 10,
-                        backgroundColor: '#0d5e50',
-                        alignItems: 'center',
-                      }}>
-                      <Image
-                        style={{width: 70, height: 50}}
-                        source={AppLogo1}
-                      />
-                    </View>
-                  </View>
-                  <View
-                    style={{
-                      marginLeft: 5,
-                      marginRight: 5,
-                      backgroundColor: '#000000',
-                      width: 150,
-                    }}>
-                    <Text
-                      style={
-                        (style_flatlist.h2text,
-                        {color: '#ffffff', textAlign: 'center'})
-                      }>
-                      Description
-                    </Text>
-                    <View
-                      style={{
-                        padding: 10,
-                        backgroundColor: '#0d5e50',
-                        alignItems: 'center',
-                      }}>
-                      <Image style={{width: 70, height: 50}} source={AppLogo} />
-                    </View>
-                  </View>
-                  <View
-                    style={{
-                      marginLeft: 5,
-                      marginRight: 5,
-                      backgroundColor: '#000000',
-                      width: 120,
-                    }}>
-                    <Text
-                      style={
-                        (style_flatlist.h2text,
-                        {color: '#ffffff', textAlign: 'center'})
-                      }>
-                      Date
-                    </Text>
-                    <View
-                      style={{
-                        padding: 10,
-                        backgroundColor: '#0d5e50',
-                        alignItems: 'center',
-                      }}>
-                      <Image
-                        style={{width: 50, height: 50}}
-                        source={calendar}
-                      />
-                    </View>
-                  </View>
-                  <View
-                    style={{
-                      marginLeft: 5,
-                      marginRight: 5,
-                      backgroundColor: '#000000',
-                      width: 150,
-                    }}>
-                    <Text
-                      style={
-                        (style_flatlist.h2text,
-                        {color: '#ffffff', textAlign: 'center'})
-                      }>
-                      Category
-                    </Text>
-                    <View
-                      style={{
-                        padding: 10,
-                        backgroundColor: '#0d5e50',
-                        alignItems: 'center',
-                      }}>
-                      <Image
-                        style={{width: 50, height: 50}}
-                        source={Categories}
-                      />
-                    </View>
-                  </View>
-                  <View
-                    style={{
-                      marginLeft: 5,
-                      marginRight: 5,
-                      backgroundColor: '#000000',
-                      width: 100,
-                    }}>
-                    <Text
-                      style={
-                        (style_flatlist.h2text,
-                        {color: '#ffffff', textAlign: 'center'})
-                      }>
-                      Debit
-                    </Text>
-                    <View
-                      style={{
-                        padding: 10,
-                        backgroundColor: '#0d5e50',
-                        alignItems: 'center',
-                      }}>
-                      <Image
-                        style={{width: 70, height: 50}}
-                        source={AppLogo3}
-                      />
-                    </View>
-                  </View>
-                  <View
-                    style={{
-                      marginLeft: 5,
-                      marginRight: 5,
-                      backgroundColor: '#000000',
-                      width: 100,
-                    }}>
-                    <Text
-                      style={
-                        (style_flatlist.h2text,
-                        {color: '#ffffff', textAlign: 'center'})
-                      }>
-                      Credit
-                    </Text>
-                    <View
-                      style={{
-                        padding: 10,
-                        backgroundColor: '#0d5e50',
-                        alignItems: 'center',
-                      }}>
-                      <Image
-                        style={{width: 70, height: 50}}
-                        source={AppLogo3}
-                      />
-                    </View>
-                  </View>
-                </View>
-                <Container ContainerStyle={{flex: 1}}>
-                  <FlatList
-                    data={this.state.data}
-                    extraData={this.state}
-                    renderItem={({item}) => this.renderRow(item)}
-                    keyExtractor={(item, index) => index.toString()}
-                  />
-                </Container>
+                </Modal>
               </View>
+              <ScrollView
+                horizontal={true}
+                // showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{flexGrow: 1}}>
+                <View
+                  style={
+                    (styles.container,
+                    {
+                      flex: 1,
+                      marginBottom: '20%',
+                      marginTop: 20,
+                      marginLeft: 20,
+                    })
+                  }>
+                  <View style={{flexDirection: 'row', marginBottom: 0}}>
+                    <View
+                      style={{
+                        backgroundColor: '#000000',
+                        width: 150,
+                        marginRight: 5,
+                      }}>
+                      <Text
+                        style={
+                          (style_flatlist.h2text,
+                          {color: '#ffffff', textAlign: 'center'})
+                        }>
+                        {'Actions'}
+                      </Text>
+                      <View
+                        style={{
+                          padding: 10,
+                          backgroundColor: '#0d5e50',
+                          alignItems: 'center',
+                        }}>
+                        <Image
+                          style={{width: 70, height: 50}}
+                          source={AppLogo2}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        marginLeft: 5,
+                        marginRight: 5,
+                        backgroundColor: '#000000',
+                        width: 150,
+                      }}>
+                      <Text
+                        style={
+                          (style_flatlist.h2text,
+                          {color: '#ffffff', textAlign: 'center'})
+                        }>
+                        Name
+                      </Text>
+                      <View
+                        style={{
+                          padding: 10,
+                          backgroundColor: '#0d5e50',
+                          alignItems: 'center',
+                        }}>
+                        <Image
+                          style={{width: 70, height: 50}}
+                          source={AppLogo1}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        marginLeft: 5,
+                        marginRight: 5,
+                        backgroundColor: '#000000',
+                        width: 150,
+                      }}>
+                      <Text
+                        style={
+                          (style_flatlist.h2text,
+                          {color: '#ffffff', textAlign: 'center'})
+                        }>
+                        Description
+                      </Text>
+                      <View
+                        style={{
+                          padding: 10,
+                          backgroundColor: '#0d5e50',
+                          alignItems: 'center',
+                        }}>
+                        <Image
+                          style={{width: 70, height: 50}}
+                          source={AppLogo}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        marginLeft: 5,
+                        marginRight: 5,
+                        backgroundColor: '#000000',
+                        width: 120,
+                      }}>
+                      <Text
+                        style={
+                          (style_flatlist.h2text,
+                          {color: '#ffffff', textAlign: 'center'})
+                        }>
+                        Date
+                      </Text>
+                      <View
+                        style={{
+                          padding: 10,
+                          backgroundColor: '#0d5e50',
+                          alignItems: 'center',
+                        }}>
+                        <Image
+                          style={{width: 50, height: 50}}
+                          source={calendar}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        marginLeft: 5,
+                        marginRight: 5,
+                        backgroundColor: '#000000',
+                        width: 150,
+                      }}>
+                      <Text
+                        style={
+                          (style_flatlist.h2text,
+                          {color: '#ffffff', textAlign: 'center'})
+                        }>
+                        Category
+                      </Text>
+                      <View
+                        style={{
+                          padding: 10,
+                          backgroundColor: '#0d5e50',
+                          alignItems: 'center',
+                        }}>
+                        <Image
+                          style={{width: 50, height: 50}}
+                          source={Categories}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        marginLeft: 5,
+                        marginRight: 5,
+                        backgroundColor: '#000000',
+                        width: 100,
+                      }}>
+                      <Text
+                        style={
+                          (style_flatlist.h2text,
+                          {color: '#ffffff', textAlign: 'center'})
+                        }>
+                        Debit
+                      </Text>
+                      <View
+                        style={{
+                          padding: 10,
+                          backgroundColor: '#0d5e50',
+                          alignItems: 'center',
+                        }}>
+                        <Image
+                          style={{width: 70, height: 50}}
+                          source={AppLogo3}
+                        />
+                      </View>
+                    </View>
+                    <View
+                      style={{
+                        marginLeft: 5,
+                        marginRight: 5,
+                        backgroundColor: '#000000',
+                        width: 100,
+                      }}>
+                      <Text
+                        style={
+                          (style_flatlist.h2text,
+                          {color: '#ffffff', textAlign: 'center'})
+                        }>
+                        Credit
+                      </Text>
+                      <View
+                        style={{
+                          padding: 10,
+                          backgroundColor: '#0d5e50',
+                          alignItems: 'center',
+                        }}>
+                        <Image
+                          style={{width: 70, height: 50}}
+                          source={AppLogo3}
+                        />
+                      </View>
+                    </View>
+                  </View>
+                  <Container ContainerStyle={{flex: 1}}>
+                    <FlatList
+                      data={this.state.data}
+                      extraData={this.state}
+                      renderItem={({item}) => this.renderRow(item)}
+                      keyExtractor={(item, index) => index.toString()}
+                    />
+                  </Container>
+                </View>
+              </ScrollView>
             </ScrollView>
 
             {/* <View style={styles.container}> */}
@@ -998,7 +1037,7 @@ export default class Home extends Component {
                 width: '85%',
                 height: 40,
                 backgroundColor: '#fff',
-                marginBottom: 20,
+                marginBottom: 10,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>

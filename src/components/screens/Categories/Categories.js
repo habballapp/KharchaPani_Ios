@@ -55,14 +55,26 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {LOGIN_CHECK, USER_ID} from '../../constants/StorageConstans';
 import AppLogo4 from '../../../assets/categoriesheader.png';
 import AppLogo6 from '../../../assets/deletelist.png';
+import {
+  TextField,
+  FilledTextField,
+  OutlinedTextField,
+} from 'react-native-material-textfield';
 
 export default class Categories extends Component {
+  fieldCategoryRef = React.createRef();
+
   constructor(props) {
     super(props);
     this.state = {
       activeSections: [],
       data: [],
       cname: '',
+      category: 'Category Name',
+      error: false,
+      correct: true,
+      errorFieldCategory: '',
+      borderColor: '#000000',
       users: [
         {id: '1', value: 'A', name: '32', desc: '32'},
         {id: '2', value: 'B', name: '125', desc: '125'},
@@ -104,6 +116,20 @@ export default class Categories extends Component {
     );
   };
 
+  onFocusFunction = () => {
+    // do some stuff on every screen focus
+
+    this.getUserIDFromAsync();
+    const isCorrect = this.state.correct;
+  };
+
+  // add a focus listener onDidMount
+  async componentDidMount() {
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.onFocusFunction();
+    });
+  }
+
   _renderHeader = (section) => {
     return (
       <View
@@ -133,9 +159,16 @@ export default class Categories extends Component {
       <View style={style.content}>
         <View>
           <TextInput
-            style={style.input}
+            style={{
+              margin: 15,
+              height: 40,
+              borderWidth: 1,
+              borderColor: this.state.borderColor,
+              width: '75%',
+              marginLeft: 20,
+            }}
             underlineColorAndroid="transparent"
-            placeholder="Category Name"
+            placeholder={this.state.category}
             placeholderTextColor="#000000"
             autoCapitalize="none"
             value={this.state.cname}
@@ -145,12 +178,19 @@ export default class Categories extends Component {
             }}
           />
 
-          <View style={{width: '40%', marginLeft: 5, marginLeft: 20}}>
+          <View
+            style={{
+              width: '40%',
+              marginLeft: 5,
+              marginLeft: 20,
+              backgroundColor: '#0d5e50',
+            }}>
             <Button
               onPress={() => this.addCategory()}
               title="Add"
+              text="Add"
               backgroundColor="#000000"
-              color="#0d5e50"></Button>
+              color="#ffffff"></Button>
           </View>
         </View>
       </View>
@@ -163,7 +203,19 @@ export default class Categories extends Component {
 
   addCategory() {
     var that = this;
+    var error = false;
 
+    if (this.state.cname == '') {
+      this.setState({category: 'Please Enter Category'});
+      this.setState({borderColor: '#FF0000'});
+
+      error = true;
+    }
+    if (error) {
+      return;
+    }
+    this.setState({category: 'Category Name'});
+    this.setState({correct: true});
     // this.setState({ isModalVisible: false });
     // Alert.alert(readId);
     fetch(`https://accounts.matz.group/api/insertcategory.php`, {
@@ -314,34 +366,35 @@ export default class Categories extends Component {
         end={{x: 1.0, y: 0.0}}
         colors={['#0d5e50', '#166D3B', '#000']}
         style={{flex: 1}}>
-        <Container
-          ContainerStyle={{
-            flex: 1,
-            backgroundColor: '#FFFFFF',
-          }}>
+        <SafeViewArea style={{flex: 1}}>
           <Container
             ContainerStyle={{
-              backgroundColor: '#0d5e50',
-              height: 40,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}></Container>
+              flex: 1,
+              backgroundColor: '#FFFFFF',
+            }}>
+            <Container
+              ContainerStyle={{
+                backgroundColor: '#0d5e50',
+                height: 40,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}></Container>
 
-          <Container
-            ContainerStyle={{flexDirection: 'row', justifyContent: 'center'}}>
-            <Image style={{width: '100%', height: 50}} source={AppLogo4} />
-          </Container>
+            <Container
+              ContainerStyle={{flexDirection: 'row', justifyContent: 'center'}}>
+              <Image style={{width: '100%', height: 50}} source={AppLogo4} />
+            </Container>
 
-          <Accordion
-            sections={this.state.SECTIONS}
-            activeSections={this.state.activeSections}
-            renderSectionTitle={this._renderSectionTitle}
-            renderHeader={this._renderHeader}
-            renderContent={this._renderContent}
-            onChange={this._updateSections}
-          />
+            <Accordion
+              sections={this.state.SECTIONS}
+              activeSections={this.state.activeSections}
+              renderSectionTitle={this._renderSectionTitle}
+              renderHeader={this._renderHeader}
+              renderContent={this._renderContent}
+              onChange={this._updateSections}
+            />
 
-          {/* 
+            {/* 
         <FlatList
           ItemSeparatorComponent={
             Platform.OS !== 'android' &&
@@ -368,67 +421,71 @@ export default class Categories extends Component {
           )}
         /> */}
 
-          <View style={(styles.container, {flex: 1})}>
             <View
-              style={{flexDirection: 'row', marginBottom: 15, marginTop: 20}}>
+              style={
+                (styles.container, {marginBottom: 20, flex: 1, marginLeft: 20})
+              }>
               <View
-                style={{
-                  backgroundColor: '#000000',
-                  width: '30%',
-                  marginRight: 5,
-                }}>
-                <Text
-                  style={
-                    (style_flatlist.h2text,
-                    {color: '#ffffff', textAlign: 'center'})
-                  }>
-                  Actions
-                </Text>
+                style={{flexDirection: 'row', marginBottom: 15, marginTop: 20}}>
                 <View
                   style={{
-                    padding: 10,
-                    backgroundColor: '#0d5e50',
-                    alignItems: 'center',
+                    backgroundColor: '#000000',
+                    width: '30%',
+                    marginRight: 5,
                   }}>
-                  <Image style={{width: 70, height: 50}} source={AppLogo2} />
+                  <Text
+                    style={
+                      (style_flatlist.h2text,
+                      {color: '#ffffff', textAlign: 'center'})
+                    }>
+                    Actions
+                  </Text>
+                  <View
+                    style={{
+                      padding: 10,
+                      backgroundColor: '#0d5e50',
+                      alignItems: 'center',
+                    }}>
+                    <Image style={{width: 70, height: 50}} source={AppLogo2} />
+                  </View>
                 </View>
-              </View>
-              <View
-                style={{
-                  marginLeft: 5,
-                  marginRight: 5,
-                  backgroundColor: '#000000',
-                  width: '20%',
-                }}>
-                <Text
-                  style={
-                    (style_flatlist.h2text,
-                    {color: '#ffffff', textAlign: 'center'})
-                  }>
-                  Name
-                </Text>
                 <View
                   style={{
-                    padding: 10,
-                    backgroundColor: '#0d5e50',
-                    alignItems: 'center',
+                    marginLeft: 5,
+                    marginRight: 5,
+                    backgroundColor: '#000000',
+                    width: '20%',
                   }}>
-                  <Image style={{width: 70, height: 50}} source={AppLogo1} />
+                  <Text
+                    style={
+                      (style_flatlist.h2text,
+                      {color: '#ffffff', textAlign: 'center'})
+                    }>
+                    Name
+                  </Text>
+                  <View
+                    style={{
+                      padding: 10,
+                      backgroundColor: '#0d5e50',
+                      alignItems: 'center',
+                    }}>
+                    <Image style={{width: 70, height: 50}} source={AppLogo1} />
+                  </View>
                 </View>
               </View>
+              <FlatList
+                data={this.state.data}
+                extraData={this.state}
+                renderItem={({item}) => this.renderRow(item)}
+                keyExtractor={(item, index) => index.toString()}
+              />
             </View>
-            <FlatList
-              data={this.state.data}
-              extraData={this.state}
-              renderItem={({item}) => this.renderRow(item)}
-              keyExtractor={(item, index) => index.toString()}
-            />
-          </View>
 
-          {/* <View style={styles.container}> */}
+            {/* <View style={styles.container}> */}
 
-          {/* </View> */}
-        </Container>
+            {/* </View> */}
+          </Container>
+        </SafeViewArea>
       </LinearGradient>
     );
   }
@@ -548,7 +605,6 @@ const style = StyleSheet.create({
   input: {
     margin: 15,
     height: 40,
-    borderColor: '#000000',
     borderWidth: 1,
     width: '75%',
     marginLeft: 20,
